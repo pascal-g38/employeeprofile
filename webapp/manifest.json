@@ -7,8 +7,8 @@
     "applicationVersion": {
       "version": "0.0.1"
     },
-    "title": "Mitarbeiterprofil",
-    "description": "Mein Mitarbeiterprofil anzeigen und Verwalten",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
@@ -122,6 +122,7 @@
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
+              "entitySet": "/EmployeeProfile",
               "contextPath": "/EmployeeProfile",
               "variantManagement": "Page",
               "navigation": {
@@ -147,6 +148,7 @@
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
+              "entitySet": "/EmployeeProfile",
               "editableHeaderContent": false,
               "contextPath": "/EmployeeProfile",
               "navigation": {
