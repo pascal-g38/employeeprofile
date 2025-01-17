@@ -5,14 +5,52 @@
     <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
         <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
     </edmx:Reference>
-    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
-        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
-    </edmx:Reference>
     <edmx:Reference Uri="/sap/opu/odata4/sap/zmvd_ui_employeeprofile/srvd/sap/zmvd_ui_employeeprofile/0001/$metadata">
         <edmx:Include Namespace="com.sap.gateway.srvd.zmvd_ui_employeeprofile.v0001" Alias="SAP__self"/>
     </edmx:Reference>
     <edmx:DataServices>
         <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="SAP__self.EmployeeProfileType">
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Mitarbeiter"/>
+                            <PropertyValue Property="ID" String="Employee"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Identification"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Feedback"/>
+                            <PropertyValue Property="ID" String="Quotes"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#GroupQuotes"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Aktivitäten und Aufgaben"/>
+                            <PropertyValue Property="ID" String="Entrys"/>
+                            <PropertyValue Property="Target" AnnotationPath="_ProfileEntry/@UI.LineItem"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="Referenzen"/>
+                            <PropertyValue Property="ID" String="References"/>
+                            <PropertyValue Property="Target" AnnotationPath="_Reference/@UI.LineItem"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="GroupQuotes">
+                    <Record>
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Aussagen von Kunden"/>
+                                    <PropertyValue Property="Value" Path="CustomerQuotes"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="SAP__self.EmployeeProfileType/CustomerQuotes">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+            </Annotations>
         </Schema>
     </edmx:DataServices>
 </edmx:Edmx>

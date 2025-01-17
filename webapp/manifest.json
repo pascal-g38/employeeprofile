@@ -103,6 +103,16 @@
           "pattern": "EmployeeProfile({key}):?query:",
           "name": "EmployeeProfileObjectPage",
           "target": "EmployeeProfileObjectPage"
+        },
+        {
+          "name": "EmployeeProfile__ProfileEntryObjectPage",
+          "pattern": "EmployeeProfile({key})/_ProfileEntry({_ProfileEntryKey}):?query:",
+          "target": "EmployeeProfile__ProfileEntryObjectPage"
+        },
+        {
+          "name": "EmployeeProfile__ReferenceObjectPage",
+          "pattern": "EmployeeProfile({key})/_Reference({_ReferenceKey}):?query:",
+          "target": "EmployeeProfile__ReferenceObjectPage"
         }
       ],
       "targets": {
@@ -138,7 +148,69 @@
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/EmployeeProfile"
+              "contextPath": "/EmployeeProfile",
+              "navigation": {
+                "_ProfileEntry": {
+                  "detail": {
+                    "route": "EmployeeProfile__ProfileEntryObjectPage"
+                  }
+                },
+                "_Reference": {
+                  "detail": {
+                    "route": "EmployeeProfile__ReferenceObjectPage"
+                  }
+                }
+              },
+              "content": {
+                "body": {
+                  "sections": {
+                    "SkillSection": {
+                      "template": "employeeprofile.ext.fragment.SkillSection",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Quotes"
+                      },
+                      "title": "{i18n>skills}"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "EmployeeProfile__ProfileEntryObjectPage": {
+          "type": "Component",
+          "id": "EmployeeProfile__ProfileEntryObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/EmployeeProfile/_ProfileEntry",
+              "content": {
+                "body": {
+                  "sections": {
+                    "RTESection": {
+                      "template": "employeeprofile.ext.fragment.RTESection",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Skills"
+                      },
+                      "title": "Beschreibung"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "EmployeeProfile__ReferenceObjectPage": {
+          "type": "Component",
+          "id": "EmployeeProfile__ReferenceObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "navigation": {},
+              "contextPath": "/EmployeeProfile/_Reference"
             }
           }
         }
