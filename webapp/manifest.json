@@ -60,6 +60,7 @@
         "sap.m": {},
         "sap.ui.core": {},
         "sap.ushell": {},
+        "sap.ui.layout": {},
         "sap.fe.templates": {}
       }
     },
